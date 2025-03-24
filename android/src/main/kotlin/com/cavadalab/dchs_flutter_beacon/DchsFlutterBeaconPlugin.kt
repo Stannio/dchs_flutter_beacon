@@ -269,11 +269,16 @@ class DchsFlutterBeaconPlugin : FlutterPlugin, ActivityAware, MethodChannel.Meth
                 result.success(true)
             }
             "setBeaconLayout" -> {
-                val iBeaconLayout = call.argument<String>("layout") ?: "m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"
+                val layout = call.argument<String>("layout") ?: "m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"
+                val iBeaconLayout = BeaconParser().setBeaconLayout(layout)
+
                 if (!beaconManager!!.beaconParsers.contains(iBeaconLayout)) {
                     beaconManager!!.beaconParsers.clear()
                     beaconManager!!.beaconParsers.add(iBeaconLayout)
                 }
+
+                beaconBroadcast = FlutterBeaconBroadcast(activity, iBeaconLayout)
+
                 result.success(true)
             }
             "setLocationAuthorizationTypeDefault" -> {
