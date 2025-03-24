@@ -124,6 +124,12 @@ class MethodChannelDchsFlutterBeacon extends DchsFlutterBeaconPlatform {
   }
 
   @override
+  Future<bool> setBeaconLayout(String layout) async {
+    return await _methodChannel
+        .invokeMethod('setBeaconLayout', {"layout": layout});
+  }
+
+  @override
   Future<bool> get close async {
     final result = await _methodChannel.invokeMethod('close');
     return _parseBoolResult(result);
