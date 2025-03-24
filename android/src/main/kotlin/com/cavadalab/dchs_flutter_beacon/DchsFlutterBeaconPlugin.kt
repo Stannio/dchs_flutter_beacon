@@ -268,6 +268,14 @@ class DchsFlutterBeaconPlugin : FlutterPlugin, ActivityAware, MethodChannel.Meth
                 beaconManager!!.setMaxTrackingAge(maxTrackingAge)
                 result.success(true)
             }
+            "setBeaconLayout" -> {
+                val iBeaconLayout = call.argument<String>("layout") ?: "m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"
+                if (!beaconManager!!.beaconParsers.contains(iBeaconLayout)) {
+                    beaconManager!!.beaconParsers.clear()
+                    beaconManager!!.beaconParsers.add(iBeaconLayout)
+                }
+                result.success(true)
+            }
             "setLocationAuthorizationTypeDefault" -> {
                 // Android does not have the concept of "requestWhenInUse" and "requestAlways" like iOS does,
                 // so this method does nothing.

@@ -47,6 +47,7 @@ abstract class DchsFlutterBeaconPlatform extends PlatformInterface {
   Future<bool> setBackgroundBetweenScanPeriod(int scanPeriod);
   Future<bool> setUseTrackingCache(bool enable);
   Future<bool> setMaxTrackingAge(int age);
+  Future<bool> setBeaconLayout(String layout);
   Future<bool> get close;
   Stream<RangingResult> ranging(List<Region> regions);
   Stream<MonitoringResult> monitoring(List<Region> regions);

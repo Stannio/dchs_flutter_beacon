@@ -60,6 +60,7 @@ class DchsFlutterBeacon {
   Future<bool> setUseTrackingCache(bool enable) =>
       _platform.setUseTrackingCache(enable);
   Future<bool> setMaxTrackingAge(int age) => _platform.setMaxTrackingAge(age);
+  Future<bool> setBeaconLayout(String layout) => _platform.setBeaconLayout(layout);
 
   Future<bool> get close => _platform.close;
   Stream<RangingResult> ranging(List<Region> regions) =>
