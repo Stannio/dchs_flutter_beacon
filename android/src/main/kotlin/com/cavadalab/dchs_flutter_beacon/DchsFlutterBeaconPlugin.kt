@@ -277,7 +277,9 @@ class DchsFlutterBeaconPlugin : FlutterPlugin, ActivityAware, MethodChannel.Meth
                     beaconManager!!.beaconParsers.add(iBeaconLayout)
                 }
 
-                beaconBroadcast = FlutterBeaconBroadcast(activity, iBeaconLayout)
+                if (activity !== null) {
+                    beaconBroadcast = FlutterBeaconBroadcast(activity, iBeaconLayout)
+                }
 
                 result.success(true)
             }
