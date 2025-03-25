@@ -225,6 +225,13 @@
         return;
     }
 
+    if ([@"setBeaconLayout" isEqualToString:call.method]) {
+        // do nothing
+
+        result(@(YES));
+        return;
+    }
+
     if ([@"setBetweenScanPeriod" isEqualToString:call.method]) {
         // do nothing
 
